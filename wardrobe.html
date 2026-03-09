@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wardrobe | Aesthetiq</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .wardrobe-header {
+            padding: 8rem 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--accent);
+            background: var(--surface);
+        }
+
+        .category-tab {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .tab {
+            color: var(--text-dim);
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .tab.active {
+            color: var(--text-main);
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1.1rem;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            width: 90%;
+            max-width: 500px;
+            padding: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: white;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--accent);
+        }
+
+        .item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .item-card {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .item-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .item-card:hover .item-overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">AESTHETIQ</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="wardrobe.html" class="active">My Wardrobe</a></li>
+                <li><a href="planner.html">Outfit Planner</a></li>
+                <li><a href="weather.html">Weather Style</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+            <a href="#" class="btn btn-outline" onclick="openModal()">+ Add Item</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="wardrobe-header">
+            <div>
+                <h1 style="font-size: 3rem;">Digital Closet</h1>
+                <p style="color: var(--text-dim);">Manage and categorize your luxury collection.</p>
+            </div>
+        </header>
+
+        <section class="category-tab">
+            <div class="tab active" onclick="filterItems('all')">All Items</div>
+            <div class="tab" onclick="filterItems('tops')">Tops</div>
+            <div class="tab" onclick="filterItems('bottoms')">Bottoms</div>
+            <div class="tab" onclick="filterItems('footwear')">Footwear</div>
+            <div class="tab" onclick="filterItems('accessories')">Accessories</div>
+        </section>
+
+        <section id="wardrobeGrid" class="item-grid">
+            <!-- Items injected by JS -->
+        </section>
+
+        <div id="uploadModal" class="modal">
+            <div class="modal-content glass">
+                <h2 style="margin-bottom: 2rem;">Add New Piece</h2>
+                <form id="addItemForm">
+                    <div class="form-group">
+                        <label for="itemName">Item Name</label>
+                        <input type="text" id="itemName" placeholder="e.g. Silk Blazer" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemCategory">Category</label>
+                        <select id="itemCategory" required>
+                            <option value="tops">Tops</option>
+                            <option value="bottoms">Bottoms</option>
+                            <option value="footwear">Footwear</option>
+                            <option value="accessories">Accessories</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemImage">Image URL</label>
+                        <input type="url" id="itemImage" placeholder="https://..." required>
+                    </div>
+                    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                        <button type="submit" class="btn btn-primary" style="flex: 1;">Save Item</button>
+                        <button type="button" class="btn btn-outline" onclick="closeModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container" style="text-align: center; color: var(--text-dim); padding: 4rem 0;">
+            &copy; 2026 Aesthetiq AI. Premium Digital Fashion.
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

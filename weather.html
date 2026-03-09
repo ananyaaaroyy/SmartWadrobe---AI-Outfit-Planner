@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Style | Aesthetiq</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .weather-hero {
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+        
+        .weather-card {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .weather-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .suggestions-title {
+            margin: 4rem 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .suggestions-title span {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .weather-item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">AESTHETIQ</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="wardrobe.html">My Wardrobe</a></li>
+                <li><a href="planner.html">Outfit Planner</a></li>
+                <li><a href="weather.html" class="active">Weather Style</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+            <a href="profile.html" class="btn btn-outline">My Account</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="weather-hero">
+            <h1 style="font-size: 3.5rem; margin-bottom: 2rem;">Forecasted Style</h1>
+            <div id="weatherDisplay">
+                <!-- Data injected by JS -->
+            </div>
+        </section>
+
+        <section>
+            <div class="suggestions-title">
+                <h2>AI Suitability Recommendations</h2>
+                <span></span>
+            </div>
+            
+            <div id="weatherSuggestions" class="weather-item-grid">
+                <!-- Suggestions injected by JS -->
+            </div>
+        </section>
+
+        <section class="glass" style="margin-top: 5rem; padding: 3rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div>
+                    <h3 style="font-size: 2rem; margin-bottom: 1.5rem;">Why this works?</h3>
+                    <p style="color: var(--text-dim); margin-bottom: 1.5rem;">Our AI analyzes humidity, wind speed, and UV indices beyond just temperature to recommend the perfect layering strategy.</p>
+                    <ul style="color: var(--text-dim); list-style: none;">
+                        <li style="margin-bottom: 0.5rem;">✓ Optimized for 18°C Comfort</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Breathable Fabric Selection</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Transitional Season Protection</li>
+                    </ul>
+                </div>
+                <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?q=80&w=800&auto=format&fit=crop" style="width: 100%; border-radius: 20px;" alt="Fashion Texture">
+            </div>
+        </section>
+    </main>
+
+    <footer style="margin-top: 5rem;">
+        <div class="container" style="text-align: center; color: var(--text-dim); padding: 4rem 0; border-top: 1px solid var(--border);">
+            &copy; 2026 Aesthetiq AI. Intelligent Weather Integration.
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

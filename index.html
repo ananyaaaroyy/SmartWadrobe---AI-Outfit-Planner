@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aesthetiq | AI-Powered Outfit Planner</title>
+    <meta
+      name="description"
+      content="Manage your wardrobe, receive AI outfit recommendations, and dress for the weather with Aesthetiq."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <div class="container nav-content">
+        <a href="index.html" class="logo">AESTHETIQ</a>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="wardrobe.html">My Wardrobe</a></li>
+          <li><a href="planner.html">Outfit Planner</a></li>
+          <li><a href="weather.html">Weather Style</a></li>
+          <li><a href="profile.html">Profile</a></li>
+        </ul>
+        <a href="wardrobe.html" class="btn btn-primary">Get Started</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero" style="padding: 10rem 0 5rem">
+        <div
+          class="container"
+          style="
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+          "
+        >
+          <div class="hero-text animate-up">
+            <span
+              style="
+                color: var(--accent);
+                text-transform: uppercase;
+                letter-spacing: 0.2em;
+                font-size: 0.8rem;
+                font-weight: 700;
+              "
+              >Future of Fashion</span
+            >
+            <h1 style="font-size: 4.5rem; line-height: 1.1; margin: 1.5rem 0">
+              Effortless Style, <br /><span style="color: var(--text-dim)"
+                >Artificially Perfected.</span
+              >
+            </h1>
+            <p
+              style="
+                font-size: 1.2rem;
+                color: var(--text-dim);
+                margin-bottom: 2.5rem;
+                max-width: 500px;
+              "
+            >
+              Elevate your daily look with AI-driven outfit combinations based
+              on your personal wardrobe and real-time weather conditions.
+            </p>
+            <div style="display: flex; gap: 1.5rem">
+              <a href="planner.html" class="btn btn-primary">Start Planning</a>
+              <a href="wardrobe.html" class="btn btn-outline"
+                >Upload Wardrobe</a
+              >
+            </div>
+          </div>
+          <div
+            class="hero-image glass animate-up"
+            style="padding: 1rem; position: relative"
+          >
+            <img
+              src="images/hero.jpg"
+              alt="AI Wardrobe Interface"
+              style="width: 100%; border-radius: 12px; display: block"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="featured" style="padding: 5rem 0">
+        <div class="container">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-end;
+              margin-bottom: 3rem;
+            "
+          >
+            <div>
+              <h2 style="font-size: 2.5rem">Featured Synergeis</h2>
+              <p style="color: var(--text-dim)">
+                Top-voted AI combinations this week.
+              </p>
+            </div>
+          </div>
+
+          <div class="category-grid">
+            <div class="outfit-card animate-up">
+              <img
+                src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800&auto=format&fit=crop"
+                alt="Autumn Look"
+              />
+              <div class="outfit-info">
+                <h3>Urban Minimalist</h3>
+                <p>Perfect for Crisp Autumn Mornings</p>
+              </div>
+            </div>
+            <div class="outfit-card animate-up" style="animation-delay: 0.2s">
+              <img
+                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+                alt="Summer Look"
+              />
+              <div class="outfit-info">
+                <h3>Coastal Chic</h3>
+                <p>Light Linen & Soft Tones</p>
+              </div>
+            </div>
+            <div class="outfit-card animate-up" style="animation-delay: 0.4s">
+              <img
+                src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800&auto=format&fit=crop"
+                alt="Professional Look"
+              />
+              <div class="outfit-info">
+                <h3>Executive Edge</h3>
+                <p>Structured Silhouettes</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="cta glass"
+        style="
+          margin: 5rem auto;
+          padding: 4rem;
+          text-align: center;
+          max-width: 1000px;
+        "
+      >
+        <h2 style="font-size: 3rem; margin-bottom: 2rem">
+          Ready to digitize your closet?
+        </h2>
+        <p
+          style="color: var(--text-dim); margin-bottom: 3rem; font-size: 1.1rem"
+        >
+          Join 50,000+ fashion enthusiasts using AI to master their personal
+          style.
+        </p>
+        <a
+          href="wardrobe.html"
+          class="btn btn-primary"
+          style="padding: 1rem 3rem; font-size: 1.1rem"
+          >Get Started Now</a
+        >
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <a href="index.html" class="logo">AESTHETIQ</a>
+            <p style="color: var(--text-dim); margin-top: 1rem">
+              The intersection of silicon and silk.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Platform</h4>
+            <ul>
+              <li><a href="wardrobe.html">My Wardrobe</a></li>
+              <li><a href="planner.html">Outfit Planner</a></li>
+              <li><a href="weather.html">Weather Style</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="profile.html">Account Settings</a></li>
+            </ul>
+          </div>
+        </div>
+        <div
+          style="
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+          "
+        >
+          &copy; 2026 Aesthetiq AI. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

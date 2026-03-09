@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Aesthetiq</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .profile-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 4rem;
+            padding: 8rem 0 4rem;
+        }
+
+        .user-sidebar {
+            text-align: center;
+        }
+
+        .user-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            padding: 5px;
+            margin: 0 auto 2rem;
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .tier-badge {
+            background: var(--accent);
+            color: black;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .profile-nav {
+            margin-top: 3rem;
+            text-align: left;
+        }
+
+        .profile-nav-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-dim);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .profile-nav-item:hover, .profile-nav-item.active {
+            color: var(--text-main);
+            padding-left: 1.5rem;
+        }
+
+        .content-card {
+            margin-bottom: 3rem;
+        }
+
+        .premium-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+            border: 1px solid var(--accent);
+            padding: 3rem;
+            border-radius: 20px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">AESTHETIQ</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="wardrobe.html">My Wardrobe</a></li>
+                <li><a href="planner.html">Outfit Planner</a></li>
+                <li><a href="weather.html">Weather Style</a></li>
+                <li><a href="profile.html" class="active">Profile</a></li>
+            </ul>
+            <a href="index.html" class="btn btn-outline" onclick="localStorage.clear(); location.reload();">Sign Out</a>
+        </div>
+    </nav>
+
+    <main class="container profile-layout">
+        <aside class="user-sidebar">
+            <div class="user-avatar">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop" alt="User Profile">
+            </div>
+            <div id="userBadge" class="tier-badge">Elite Member</div>
+            <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Ananya Roy</h2>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Member since March 2024</p>
+            
+            <div class="profile-nav">
+                <div class="profile-nav-item active" onclick="switchTab('saved')">Saved Outfits</div>
+                <div class="profile-nav-item" onclick="switchTab('preferences')">Style Preferences</div>
+                <div class="profile-nav-item" onclick="switchTab('billing')">Billing & Subscription</div>
+                <div class="profile-nav-item" onclick="switchTab('security')">Security</div>
+            </div>
+        </aside>
+
+        <section class="main-content">
+            <!-- Saved Outfits Section -->
+            <div id="savedSection" class="tab-content active">
+                <h3 style="font-size: 2rem; margin-bottom: 2rem;">Saved Concepts</h3>
+                <div class="item-grid" style="grid-template-columns: repeat(2, 1fr);">
+                    <div class="outfit-card glass" style="height: 300px;">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop" style="height: 100%;" alt="Saved Look 1">
+                        <div class="outfit-info" style="opacity: 1;">
+                            <h3>Midnight Gala</h3>
+                            <p>Created 2 days ago</p>
+                        </div>
+                    </div>
+                    <div class="outfit-card glass" style="height: 300px;">
+                        <img src="https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?q=80&w=800&auto=format&fit=crop" style="height: 100%;" alt="Saved Look 2">
+                        <div class="outfit-info" style="opacity: 1;">
+                            <h3>Executive Brunch</h3>
+                            <p>Created last week</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preferences Section -->
+            <div id="preferencesSection" class="tab-content" style="display: none;">
+                <h3 style="font-size: 2rem; margin-bottom: 2rem;">Style DNA</h3>
+                <div class="glass" style="padding: 2rem;">
+                    <div class="form-group" style="margin-bottom: 2rem;">
+                        <label>Preferred Aesthetic</label>
+                        <select class="glass" style="width: 100%; padding: 1rem; color: white; border: 1px solid var(--border);">
+                            <option>Minimalist Modern</option>
+                            <option>Avant-Garde</option>
+                            <option>Classic Heritage</option>
+                            <option>Streetwear Luxury</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Color Palette Preference</label>
+                        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <div style="width: 40px; height: 40px; background: #000; border: 1px solid #fff; border-radius: 50%; cursor: pointer;"></div>
+                            <div style="width: 40px; height: 40px; background: #fff; border: 1px solid #ddd; border-radius: 50%; cursor: pointer;"></div>
+                            <div style="width: 40px; height: 40px; background: #d4af37; border-radius: 50%; cursor: pointer;"></div>
+                            <div style="width: 40px; height: 40px; background: #86868b; border-radius: 50%; cursor: pointer;"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 2rem;" onclick="alert('Preferences Saved!')">Update DNA</button>
+                </div>
+            </div>
+
+            <!-- Billing Section -->
+            <div id="billingSection" class="tab-content" style="display: none;">
+                <h3 style="font-size: 2rem; margin-bottom: 1rem;">Subscription Plan</h3>
+                <p style="color: var(--text-dim); margin-bottom: 2rem;">You are currently on the <strong>Elite Tier</strong>.</p>
+                
+                <div class="premium-card">
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Aesthetiq Pro</h3>
+                    <p style="color: var(--text-dim); margin-bottom: 2rem;">Unlock the full power of AI styling engines and seasonal trend forecasting.</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <span style="font-size: 2.5rem; font-weight: 700;">$12.99</span>
+                            <span style="color: var(--text-dim);">/mo</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="openPaymentModal()">Manage Subscription</button>
+                    </div>
+                </div>
+
+                <div class="glass" style="margin-top: 2rem; padding: 2rem;">
+                    <h4 style="margin-bottom: 1rem;">Payment Method</h4>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--text-dim);">•••• •••• •••• 4242</span>
+                        <a href="#" style="color: var(--accent); text-decoration: none; font-size: 0.8rem;">Change</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content glass" style="max-width: 600px;">
+            <h2 style="margin-bottom: 1.5rem;">Upgrade to Luxury Pro</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem;">
+                <div class="glass" style="padding: 1.5rem; border: 1px solid var(--accent);">
+                    <h4 style="color: var(--accent);">Annual</h4>
+                    <p style="font-size: 2rem; font-weight: 700;">$99</p>
+                    <p style="font-size: 0.8rem; color: var(--text-dim);">Save 35%</p>
+                </div>
+                <div class="glass" style="padding: 1.5rem;">
+                    <h4>Monthly</h4>
+                    <p style="font-size: 2rem; font-weight: 700;">$12.99</p>
+                    <p style="font-size: 0.8rem; color: var(--text-dim);">Cancel anytime</p>
+                </div>
+            </div>
+            <button class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;" onclick="confirmUpgrade()">Confirm Subscription</button>
+            <button class="btn btn-outline" style="width: 100%;" onclick="closePaymentModal()">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            // Hide all contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            // Remove active from nav
+            document.querySelectorAll('.profile-nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show target content
+            document.getElementById(tab + 'Section').style.display = 'block';
+            
+            // Set nav active
+            event.currentTarget.classList.add('active');
+        }
+
+        function openPaymentModal() {
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        function confirmUpgrade() {
+            alert('Your subscription has been updated to Aesthetiq Pro!');
+            closePaymentModal();
+            document.getElementById('userBadge').innerText = 'PRO MEMBER';
+            document.getElementById('userBadge').style.background = '#fff';
+            document.getElementById('userBadge').style.color = '#000';
+        }
+    </script>
+
+    <footer style="margin-top: 5rem;">
+        <div class="container" style="text-align: center; color: var(--text-dim); padding: 4rem 0; border-top: 1px solid var(--border);">
+            &copy; 2026 Aesthetiq AI. Premium Personal Styling.
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
